@@ -15,7 +15,7 @@ function App() {
       setMobileSizing(window.innerWidth <= 480);
     };
 
-    handleResize(); // Run once on mount
+    handleResize(); // 
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);

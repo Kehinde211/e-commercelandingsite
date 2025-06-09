@@ -6,17 +6,7 @@ const Advert = () => {
 
   return (
     <div
-      style={{
-        backgroundColor: "rgb(5, 83, 65)",
-        width: "75%",
-        paddingBottom: "30px",
-        paddingTop: "30px",
-        marginTop: "40px",
-        marginLeft: "20%",
-        position: "relative", // make it the reference for absolute children
-        overflow: "hidden",
-        borderRadius: "20px"
-      }}
+      className="advert"
     >
       {/* Top-left image */}
       <img
@@ -29,6 +19,7 @@ const Advert = () => {
       height: "15rem",
       zIndex: 1,
     }}
+    className="imaged"
   />
 
       {/* Text and button center content */}
@@ -70,6 +61,7 @@ const Advert = () => {
       height: "15rem",
       zIndex: 1,
     }}
+    className="image"
   />
     </div>
   );
