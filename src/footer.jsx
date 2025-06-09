@@ -1,8 +1,33 @@
-import React from "react";
- // Import the CSS file
+import React, { useState, useEffect } from "react";
 
 const Footer = () => {
-  return (
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mobileSizing = () => {
+      setIsMobile(window.innerWidth <= 480);
+    };
+
+    mobileSizing();
+    window.addEventListener("resize", mobileSizing);
+    return () => window.removeEventListener("resize", mobileSizing);
+  }, []);
+
+  const footerMobile = (
+    <footer className="footer-dropdown">
+      <div>
+        <p>Company</p>
+      </div>
+      <div>
+        <p>Features</p>
+      </div>
+      <div>
+        <p>Helpful Links</p>
+      </div>
+    </footer>
+  );
+
+  const footerDesktop = (
     <footer className="footer">
       <div className="footer-columns">
         <div className="footer-column">
@@ -42,7 +67,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="footer-column">
+        <div className="footer-column b">
           <h3>Helpful Links</h3>
           <ul>
             <li>Support</li>
@@ -75,6 +100,8 @@ const Footer = () => {
       </div>
     </footer>
   );
+
+  return isMobile ? footerMobile : footerDesktop;
 };
 
 export default Footer;
