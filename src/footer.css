@@ -1,0 +1,22 @@
+.footer-dropdown .dropdown-section {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    margin-left: 0;
+  }
+  
+  .dropdown-header {
+    cursor: pointer;
+    margin-right: 50%;
+    width: 95px;
+  }
+  
+  .dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+  }
+  
+  .dropdown-content.open {
+    max-height: 500px; 
+  }
+  

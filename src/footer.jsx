@@ -1,28 +1,77 @@
 import React, { useState, useEffect } from "react";
+import "./Footer.css"; // Make sure to import the CSS
 
 const Footer = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
+  const [company, setCompany] = useState(false);
+  const [features, setFeatures] = useState(false);
+  const [helpfulLinks, setHelpfulLinks] = useState(false);
 
   useEffect(() => {
-    const mobileSizing = () => {
-      setIsMobile(window.innerWidth <= 480);
-    };
-
-    mobileSizing();
+    const mobileSizing = () => setIsMobile(window.innerWidth <= 480);
     window.addEventListener("resize", mobileSizing);
     return () => window.removeEventListener("resize", mobileSizing);
   }, []);
 
+  const toggleSection = (sectionSetter) => {
+    sectionSetter((prev) => !prev);
+  };
+
   const footerMobile = (
     <footer className="footer-dropdown">
-      <div>
-        <p>Company</p>
+      <div className="dropdown-section">
+        <div className="dropdown-header" onClick={() => toggleSection(setCompany)}>
+          <p>Company</p>
+        </div>
+        <div className={`dropdown-content ${company ? "open" : ""}`}>
+          <ul>
+            <li>About</li>
+            <li>Careers</li>
+            <li>Testimonials</li>
+            <li>Affiliates</li>
+            <li>Blog</li>
+            <li>Contact</li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <p>Features</p>
+
+      <div className="dropdown-section">
+        <div className="dropdown-header" onClick={() => toggleSection(setFeatures)}>
+          <p>Features</p>
+        </div>
+        <div className={`dropdown-content ${features ? "open" : ""}`}>
+          <ul>
+            <li>Client Proofing</li>
+            <li>Password Protection</li>
+            <li>Image Tagging</li>
+            <li>Social Media</li>
+            <li>Watermarking</li>
+          </ul>
+          <ul>
+            <li>eCommerce</li>
+            <li>Comments</li>
+            <li>Animations</li>
+            <li>Image Licensing</li>
+            <li>AI Images</li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <p>Helpful Links</p>
+
+      <div className="dropdown-section">
+        <div className="dropdown-header" onClick={() => toggleSection(setHelpfulLinks)}>
+          <p>Helpful Links</p>
+        </div>
+        <div className={`dropdown-content ${helpfulLinks ? "open" : ""}`}>
+          <ul>
+            <li>Support</li>
+            <li>Documentation</li>
+            <li>Plans & Pricing</li>
+            <li>WordPress Hosting</li>
+            <li>Start a Blog</li>
+            <li>Make a Website</li>
+            <li>WPBeginner</li>
+          </ul>
+        </div>
       </div>
     </footer>
   );
